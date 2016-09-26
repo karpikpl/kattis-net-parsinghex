@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace KattisSolution.Tests
 {
-    [Ignore]
+    [Ignore("Uncoment this only when there's no data files")]
     [TestFixture]
     [Category("sample")]
     public class ProgramBasicTest

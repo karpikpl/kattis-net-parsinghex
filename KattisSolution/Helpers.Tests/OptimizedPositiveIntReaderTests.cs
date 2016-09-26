@@ -9,13 +9,12 @@ namespace KattisSolution.Helpers.Tests
     [TestFixture]
     public class OptimizedPositiveIntReaderTests
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
         }
 
         [Test]
-        [ExpectedException(typeof(NoMoreTokensException))]
         public void OptimizedReader_Should_ThrowException_When_StreamEmpty()
         {
             // Arrange
@@ -23,8 +22,8 @@ namespace KattisSolution.Helpers.Tests
             {
                 var target = new OptimizedPositiveIntReader(ms);
 
-                // Act
-                target.NextInt();
+                // Act & Assert
+                Assert.Throws<NoMoreTokensException>(() => target.NextInt());
             }
         }
 

@@ -8,29 +8,35 @@ namespace KattisSolution.Helpers.Tests
     [Category("Helpers")]
     public class TestCaseFinderTests
     {
+        private string _testCaseInPath;
+        private string _testCaseOutPath;
         private const string TestCaseIn = "12345.in";
         private const string TestCaseOut = "12345.ans";
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
-            using (var f = File.CreateText(TestCaseIn))
+            var solutionDir = Directory.GetParent(TestContext.CurrentContext.TestDirectory).Parent.Parent;
+            _testCaseInPath = Path.Combine(solutionDir.FullName, TestCaseIn);
+            _testCaseOutPath = Path.Combine(solutionDir.FullName, TestCaseOut);
+
+            using (var f = File.CreateText(_testCaseInPath))
             {
                 f.Write("11\n");
             }
-            using (var f = File.CreateText(TestCaseOut))
+            using (var f = File.CreateText(_testCaseOutPath))
             {
                 f.Write("55\n");
             }
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
-            if (File.Exists(TestCaseIn))
-                File.Delete(TestCaseIn);
-            if (File.Exists(TestCaseOut))
-                File.Delete(TestCaseOut);
+            if (File.Exists(_testCaseInPath))
+                File.Delete(_testCaseInPath);
+            if (File.Exists(_testCaseOutPath))
+                File.Delete(_testCaseOutPath);
         }
 
         [Test]
@@ -40,7 +46,7 @@ namespace KattisSolution.Helpers.Tests
 
 
             // Act
-            var result = TestCaseFinder.GetTestCases();
+            var result = TestCaseFinder.GetTestCases().ToList();
 
             // Assert
             Assert.That(result, Is.Not.Empty);

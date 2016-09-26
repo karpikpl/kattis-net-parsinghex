@@ -12,7 +12,7 @@ namespace KattisSolution.Tests
     {
         private IEnumerable<TestCase> _testCases;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             _testCases = TestCaseFinder.GetTestCases();
