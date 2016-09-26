@@ -7,7 +7,7 @@ $workingDir = Get-Location
 Write-Host "Working dir " $workingDir
 
 # https://open.kattis.com/problems/{problem}}/file/statement/samples.zip
-$url = https://open.kattis.com/problems/" + $args[0] + "/file/statement/samples.zip"
+$url = "https://open.kattis.com/problems/" + $args[0] + "/file/statement/samples.zip"
 $file = $workingDir.ToString() + "\sampledata.zip"
 $clnt.DownloadFile($url,$file)
 Write-Host "File downloaded to " $file
