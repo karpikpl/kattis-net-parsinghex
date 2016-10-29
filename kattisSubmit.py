@@ -143,7 +143,7 @@ def submit(submit_url, cookies, problem, language, files, mainclass='', tag=''):
 
     sub_files = []
     for f in files:
-        with open(f) as sub_file:
+        with open(f, encoding='utf-8-sig') as sub_file:
             sub_files.append(('sub_file[]',
                               (os.path.basename(f),
                                sub_file.read(),
