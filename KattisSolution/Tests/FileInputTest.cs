@@ -10,35 +10,29 @@ namespace KattisSolution.Tests
     [TestFixture]
     public class FileInputTest
     {
-        private IEnumerable<TestCase> _testCases;
-
-        [OneTimeSetUp]
-        public void SetUp()
+        [Test, TestCaseSource(nameof(GetTestCases))]
+        public void AllCasesFromFiles2_Should_Pass(TestCase testCase)
         {
-            _testCases = TestCaseFinder.GetTestCases();
+
+            Console.WriteLine("Running for {0}", testCase.In);
+            // Arrange
+            var expectedResult = File.ReadAllText(testCase.Out);
+
+            using (var dataStream = File.OpenRead(testCase.In))
+            using (var outStream = new MemoryStream())
+            {
+                // Act
+                Program.Solve(dataStream, outStream);
+                var result = Encoding.UTF8.GetString(outStream.ToArray());
+
+                // Assert
+                Assert.That(result, Is.EqualTo(expectedResult));
+            }
         }
 
-        [Test]
-        public void AllCasesFromFiles_Should_Pass()
+        private static IEnumerable<TestCase> GetTestCases()
         {
-            foreach (var testCase in _testCases)
-            {
-                Console.WriteLine("Running for {0}", testCase.In);
-                // Arrange
-                var expectedResult = File.ReadAllText(testCase.Out);
-
-                using (var dataStream = File.OpenRead(testCase.In))
-                using (var outStream = new MemoryStream())
-                {
-                    // Act
-                    Program.Solve(dataStream, outStream);
-                    var result = Encoding.UTF8.GetString(outStream.ToArray());
-
-                    // Assert
-                    Assert.That(result, Is.EqualTo(expectedResult));
-                }
-            }
-
+            return TestCaseFinder.GetTestCases();
         }
     }
 }
