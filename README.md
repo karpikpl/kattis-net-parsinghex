@@ -5,7 +5,7 @@ Scaffolding for solving Kattis problems.
 Put all your code in the `Program.cs` file.
 
 # Setup
-Run `setup.ps1 [POBLEM_NAME]` script to setup the project
+Run `init.ps1 [POBLEM_NAME]` script to setup the project
 
 # Submitting
 * Download (katisrc file)[https://open.kattis.com/download/kattisrc]
