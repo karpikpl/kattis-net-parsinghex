@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 namespace KattisSolution.Tests
 {
+    [Category("Kattis samples")]
     [TestFixture]
     public class FileInputTest
     {
