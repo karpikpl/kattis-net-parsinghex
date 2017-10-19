@@ -1,4 +1,4 @@
-# Kattis Solution
+# Kattis Solution ![build](https://travis-ci.org/karpikpl/kattis-Solution-net.svg?branch=master)
 Scaffolding for solving Kattis problems.
 
 # Solving

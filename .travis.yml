@@ -6,3 +6,9 @@ install:
 script:
   - xbuild /p:Configuration=Release KattisSolution.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe ./KattisSolution/bin/Release/KattisSolution.exe
+matrix:
+  include:
+    - dotnet: 1.0.1
+      mono: none
+      dist: trusty
+    - mono: latest
