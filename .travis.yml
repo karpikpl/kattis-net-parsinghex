@@ -1,0 +1,8 @@
+language: csharp
+solution: KattisSolution.sln
+install:
+  - nuget restore KattisSolution.sln
+  - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release KattisSolution.sln
+  - mono ./testrunner/NUnit.Runners.3.7.0/tools/nunit-console.exe ./KattisSolution/bin/Release/KattisSolution.exe
