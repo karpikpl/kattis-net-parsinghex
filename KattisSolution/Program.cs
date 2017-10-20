@@ -31,8 +31,8 @@ namespace KattisSolution
 
 				while (match.Success)
 				{
-					int hex;
-					bool parsed = int.TryParse(match.Value.Substring(2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out hex);
+					UInt64 hex;
+					bool parsed = UInt64.TryParse(match.Value.Substring(2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out hex);
 
 					if (parsed)
 					{
