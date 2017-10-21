@@ -1,4 +1,6 @@
-# Kattis Solution ![build](https://travis-ci.org/karpikpl/kattis-Solution-net.svg?branch=master)
+# About [![Build Status](https://travis-ci.org/karpikpl/kattis-net-parsinghex.svg?branch=master)](https://travis-ci.org/karpikpl/kattis-net-parsinghex)
+ES2016 wrapper for https://open.kattis.com/ platform.
+
 Scaffolding for solving Kattis problems.
 
 # Solving
